@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🕐 Digital Clock - Multiple Time Zones</title>
+  <link rel="stylesheet" href="clock-style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕐</text></svg>">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>🕐 Digital Clock</h1>
+      <p>Real-time display across multiple time zones</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Controls Panel -->
+      <section class="controls">
+        <div class="control-group">
+          <label for="timeFormat">Time Format:</label>
+          <select id="timeFormat" onchange="changeFormat(this.value)">
+            <option value="12">12-Hour (AM/PM)</option>
+            <option value="24">24-Hour</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="dateFormat">Date Format:</label>
+          <select id="dateFormat" onchange="changeDateFormat(this.value)">
+            <option value="US">MM/DD/YYYY</option>
+            <option value="EU">DD/MM/YYYY</option>
+            <option value="ISO">YYYY-MM-DD</option>
+          </select>
+        </div>
+
+        <button class="btn-add" onclick="showAddTimeZone()">+ Add Time Zone</button>
+      </section>
+
+      <!-- Clock Display -->
+      <section class="clocks-grid">
+        <div id="clocksContainer" class="clocks-container">
+          <!-- Dynamic clocks will be added here -->
+        </div>
+      </section>
+
+      <!-- Add Time Zone Modal -->
+      <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2>Add Time Zone</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <input 
+              type="text" 
+              id="searchInput" 
+              class="search-input"
+              placeholder="Search time zones... (e.g., 'New York', 'London', 'Tokyo')"
+              onkeyup="filterTimeZones()"
+            >
+            <div id="timeZonesList" class="timezones-list">
+              <!-- Options will be populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>⏱️ Real-time clock powered by JavaScript | Created for time zone management</p>
+    </footer>
+  </div>
+
+  <script src="clock-script.js"></script>
+</body>
+</html>
